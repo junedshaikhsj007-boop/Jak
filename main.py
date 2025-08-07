@@ -202,9 +202,14 @@ def run_web_server():
 def main():
     run_web_server()
     start_uptime_robot_monitor()
-    loop = asyncio.get_event_loop()
-    loop.create_task(telethon_init())
 
+# WITH THIS:
+async def start_bot():
+    await telethon_init()
+    await app.run_polling()
+
+if __name__ == "__main__":
+    asyncio.run(start_bot())
     app = Application.builder().token(BOT_TOKEN).build()
     app.add_handler(CommandHandler("start", start))
     app.add_handler(CallbackQueryHandler(button))
