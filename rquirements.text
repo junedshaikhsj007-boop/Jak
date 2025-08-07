@@ -1,1 +1,2 @@
-herepython-telegram-bot==20.3
+hereppython-telegram-bot==20.3
+telethon==1.29.3
